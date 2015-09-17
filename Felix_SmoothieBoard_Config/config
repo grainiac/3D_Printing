@@ -203,7 +203,7 @@ endstops_enable                              true             # the endstop modu
 alpha_min_endstop                            1.24^            # add a ! to invert if endstop is NO connected to ground
 alpha_max_endstop                            1.25^            # NOTE set to nc if this is not installed
 alpha_homing_direction                       home_to_min      # or set to home_to_max and set alpha_max
-alpha_min                                    -10              # this gets loaded after homing when home_to_min is set
+alpha_min                                    0                # this gets loaded after homing when home_to_min is set
 alpha_max                                    200              # this gets loaded after homing when home_to_max is set
 beta_min_endstop                             1.26^            #
 beta_max_endstop                             1.27^            #
@@ -214,7 +214,7 @@ gamma_min_endstop                            1.28^            # was 1.28^ before
 gamma_max_endstop                            1.29^            #
 gamma_homing_direction                       home_to_min      #
 gamma_min                                    0                #
-gamma_max                                    210              #
+gamma_max                                    215              #
 
 # optional order in which axis will home, default is they all home at the same time,
 # if this is set it will force each axis to home one at a time in the specified order
@@ -266,9 +266,9 @@ zprobe.probe_height                          5               # how much above be
 # Three Point Platform Compensation Strategy
 #
 leveling-strategy.three-point-leveling.enable         true        # a leveling strategy that probes three points to define a plane and keeps the Z parallel to that plane
-leveling-strategy.three-point-leveling.point1         110.0,10.0  # the first probe point (x,y) optional may be defined with M557
-leveling-strategy.three-point-leveling.point2         200.0,160.0 # the second probe point (x,y)
-leveling-strategy.three-point-leveling.point3         30.0,160.0  # the third probe point (x,y)
+leveling-strategy.three-point-leveling.point1         100.0,20.0  # the first probe point (x,y) optional may be defined with M557
+leveling-strategy.three-point-leveling.point2         180.0,180.0 # the second probe point (x,y)
+leveling-strategy.three-point-leveling.point3         20.0,180.0  # the third probe point (x,y)
 leveling-strategy.three-point-leveling.home_first     true        # home the XY axis before probing
 leveling-strategy.three-point-leveling.tolerance      0.03        # the probe tolerance in mm, anything less that this will be ignored, default is 0.03mm
 leveling-strategy.three-point-leveling.probe_offsets  10,30,2     # the probe offsets from nozzle, must be x,y,z, default is no offset

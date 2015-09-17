@@ -1,8 +1,14 @@
 # Robot module configurations : general handling of movement G-codes and slicing into moves
 
 arm_solution                                 linear_delta     # delta selection
-arm_length                                   298.00           # this is the length of an arm from hinge to hinge
-arm_radius                                   143.85           # this is the horiontal distance from hinge to hinge when the effector is centered
+# Magnetic Kossel Pro
+arm_length                                   313.00           # this is the length of an arm from hinge to hinge
+arm_radius                                   130.20           # this is the horiontal distance from hinge to hinge when the effector is centered
+
+# Standard Kossel Pro
+# arm_length                                   298.00           # this is the length of an arm from hinge to hinge
+# arm_radius                                   143.85           # this is the horiontal distance from hinge to hinge when the effector is centered
+
 
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
 default_seek_rate                            4000             # Default rate ( mm/minute ) for G0 moves
@@ -28,23 +34,23 @@ base_stepping_frequency                      100000           # Base frequency f
 
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
 alpha_step_pin                               2.1              # Pin for alpha stepper step signal
-alpha_dir_pin                                0.11             # Pin for alpha stepper direction
+alpha_dir_pin                                0.11!            # Pin for alpha stepper direction
 alpha_en_pin                                 0.10             # Pin for alpha enable pin
-alpha_current                                1.0              # X stepper motor current
+alpha_current                                1.2              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min actuator max speed
 x_axis_max_speed                             30000.0          # mm/min cartesian max speed
 
 beta_step_pin                                2.2              # Pin for beta stepper step signal
-beta_dir_pin                                 0.20             # Pin for beta stepper direction
+beta_dir_pin                                 0.20!            # Pin for beta stepper direction
 beta_en_pin                                  0.19             # Pin for beta enable
-beta_current                                 1.0              # Y stepper motor current
+beta_current                                 1.2              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 y_axis_max_speed                             30000.0          # mm/min
 
 gamma_step_pin                               2.3              # Pin for gamma stepper step signal
-gamma_dir_pin                                0.22             # Pin for gamma stepper direction
+gamma_dir_pin                                0.22!            # Pin for gamma stepper direction
 gamma_en_pin                                 0.21             # Pin for gamma enable
-gamma_current                                1.0              # Z stepper motor current
+gamma_current                                1.2              # Z stepper motor current
 gamma_max_rate                               30000.0          # mm/min
 z_axis_max_speed                             30000.0          # mm/min
 
@@ -61,10 +67,10 @@ extruder.E3Dv6.default_feed_rate                   600              # Default ra
 extruder.E3Dv6.acceleration                        500              # Acceleration in mm/sec^2 only used for retracts
 extruder.E3Dv6.max_speed                           50               # mm/sec NOTE only used for retracts
 
-extruder.E3Dv6.retract_length                      5                # Length of retract/unretract (mm).
-extruder.E3Dv6.retract_feedrate                    45               # Retract speed (mm/sec).
-extruder.E3Dv6.retract_zlift_length                0.2              # Small upward z-movement during retract.
-extruder.E3Dv6.retract_zlift_feedrate              6000	            # z-lift feedrate (mm/min NOT mm/sec).
+extruder.E3Dv6.retract_length                      6                # Length of retract/unretract (mm).
+extruder.E3Dv6.retract_feedrate                    60               # Retract speed (mm/sec).
+#extruder.E3Dv6.retract_zlift_length               0.2              # Small upward z-movement during retract.
+#extruder.E3Dv6.retract_zlift_feedrate             6000	            # z-lift feedrate (mm/min NOT mm/sec).
 #extruder.E3Dv6.filament_diameter                  1.75             # uncomment for volumetric extrusion   
 
 extruder.E3Dv6.step_pin                            2.0              # Pin for extruder step signal
@@ -89,10 +95,9 @@ temperature_control.hotend.set_m_code        104              #
 temperature_control.hotend.set_and_wait_m_code 109            #
 temperature_control.hotend.designator        T                #
 
-#P39.98 I5.00 D79.91
-# temperature_control.hotend.p_factor          39.98            #
-# temperature_control.hotend.i_factor          5.00             #
-# temperature_control.hotend.d_factor          79.91            #
+temperature_control.hotend.p_factor          49.9000         #
+temperature_control.hotend.i_factor          3.83300         #
+temperature_control.hotend.d_factor          163.000         #
 
 # For bed
 temperature_control.bed.enable               true             #
@@ -104,6 +109,11 @@ temperature_control.bed.thermistor           Semitec        # http://smoothiewar
 temperature_control.bed.set_m_code           140              #
 temperature_control.bed.set_and_wait_m_code  190              #
 temperature_control.bed.designator           B                #
+
+temperature_control.bed.p_factor             230.6           #
+temperature_control.bed.i_factor             9.759           #
+temperature_control.bed.d_factor             1362            #
+
 # uncomment followng to use bang bang isntead of PID for the bed (best for relay conrolled hotbeds)
 #temperature_control.bed.bang_bang            true             # set to true to use bang bang control rather than PID
 #temperature_control.bed.hysteresis           2.0              # set to the temperature in degrees C to use as hysteresis when using bang bang
@@ -149,7 +159,7 @@ gamma_min_endstop                            nc
 gamma_max_endstop                            1.28^            #
 gamma_homing_direction                       home_to_max      #
 gamma_min                                    0                #
-gamma_max                                    275              # change to suit your height
+gamma_max                                    255              # change to suit your height
 
 #probe endstop
 #probe_pin                                    1.29^            # optional pin for probe
