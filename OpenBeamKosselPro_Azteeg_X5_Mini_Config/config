@@ -6,7 +6,7 @@
 # The gamma tower height is used for all towers on delta robots
 # Rest of the tower config is below, under Endstops
 # ---------------------------------------------------------------------
-gamma_max                                    260
+gamma_max                                    280
 
 
 # Delta Geometry
@@ -17,8 +17,8 @@ gamma_max                                    260
 #              = 128.5
 # ---------------------------------------------------------------------
 arm_solution                                 linear_delta     # default linear_delta, you can also try kossel
-arm_radius                                   140.00           # this is the horiontal distance from hinge to hinge when the effector is centered
-arm_length                                   320.00           # length of the delta arms (hopefully they're all the same!)
+arm_radius                                   145.00           # this is the horiontal distance from hinge to hinge when the effector is centered
+arm_length                                   295.00           # length of the delta arms (hopefully they're all the same!)
 
 
 # If you have a Z probe, you can select a calibration strategy here
@@ -30,7 +30,7 @@ arm_length                                   320.00           # length of the de
 # PLEASE NOTE: probe_offset_x and probe_offset_y MUST be 0 if you want to use depth (Z) correction!
 # ---------------------------------------------------------------------
 leveling-strategy.comprehensive-delta.enable true
-comprehensive-delta.probe_smoothing                       3                # if your probe has repeatability issues, this will probe multiple times & take the average (default 1)
+comprehensive-delta.probe_smoothing                       5                # if your probe has repeatability issues, this will probe multiple times & take the average (default 1)
 comprehensive-delta.probe_priming                         1                # if your probe keeps "creeping down", this will run it the specified number of times to get it to settle
 comprehensive-delta.probe_acceleration                    75               # acceleration will be temporarily set to this during probing; original is restored later; 100 is a good value
 comprehensive-delta.probe_offset_x                        0                # distance between the probe and the nozzle
@@ -66,14 +66,14 @@ delta_segments_per_second                    250              # segments per sec
 # Arm solution configuration : Delta robot. Translates mm positions into stepper positions
 # This is for an old Rostock MAX with 15-teeth pullies. Use a belt/pulley calculator to find the values for your machine
 # ---------------------------------------------------------------------
-alpha_steps_per_mm                           163             # Steps per mm for alpha stepper
-beta_steps_per_mm                            163             # Steps per mm for beta stepper
-gamma_steps_per_mm                           163             # Steps per mm for gamma stepper
+alpha_steps_per_mm                           163              # Steps per mm for alpha stepper
+beta_steps_per_mm                            163              # Steps per mm for beta stepper
+gamma_steps_per_mm                           163              # Steps per mm for gamma stepper
 
 
 # Planner module configuration : Look-ahead and acceleration configuration
 # ---------------------------------------------------------------------
-acceleration                                 1000             # Acceleration in mm/second/second.
+acceleration                                 2400             # Acceleration in mm/second/second.
 acceleration_ticks_per_second                1000             # Number of times per second the speed is updated
 planner_queue_size                           32               # DO NOT CHANGE THIS UNLESS YOU KNOW EXACTLY WHAT YOUR ARE DOING
 junction_deviation                           0.01             # Similar to the old "max_jerk", in millimeters, see : https://github.com/grbl/grbl/blob/master/planner.c#L409
@@ -152,7 +152,7 @@ extruder.E3Dv6.enable                              true             # Whether to
 
 extruder.E3Dv6.steps_per_mm                        930              # Steps per mm for extruder stepper
 extruder.E3Dv6.default_feed_rate                   600              # Default rate ( mm/minute ) for moves where only the extruder moves
-extruder.E3Dv6.acceleration                        2000             # Acceleration in mm/sec^2 only used for retracts
+extruder.E3Dv6.acceleration                        3000             # Acceleration in mm/sec^2 only used for retracts
 extruder.E3Dv6.max_speed                           1000             # mm/sec NOTE only used for retracts
 
 extruder.E3Dv6.step_pin                            2.0              # Pin for extruder step signal
@@ -244,8 +244,7 @@ temperatureswitch.hotend.cooldown_poll       5                # poll cooldown at
 # LCD Panel http://smoothieware.org/panel
 # ---------------------------------------------------------------------
 # -Example viki2 config for an azteeg miniV2 with IDC cable
-panel.enable                                 true              # set to true to enable the panel code
-#panel.lcd                                    viki_lcd         # set type of panel also viki_lcd, i2c_lcd is a generic i2c panel, panelolu2
+panel.enable                                 true             # set to true to enable the panel code
 panel.lcd                                    viki2             # set type of panel
 panel.spi_channel                            0                 # set spi channel to use P0_18,P0_15 MOSI,SCLK
 panel.spi_cs_pin                             0.16              # set spi chip select
