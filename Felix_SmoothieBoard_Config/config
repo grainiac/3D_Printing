@@ -179,9 +179,9 @@ temperature_control.bed.set_m_code             140              #
 temperature_control.bed.set_and_wait_m_code    190              #
 temperature_control.bed.designator             B                #
 
-temperature_control.bed.p_factor               260.7            #
-temperature_control.bed.i_factor               10.193           #
-temperature_control.bed.d_factor               1667             #
+temperature_control.bed.p_factor               176.0            #
+temperature_control.bed.i_factor               7.638            #
+temperature_control.bed.d_factor               1014             #
 
 # Switch module for fan control
 # ---------------------------------------------------------------------
@@ -242,8 +242,10 @@ panel.gamma_jog_feedrate                       200               # z jogging fee
 panel.hotend_temperature                       185               # temp to set hotend when preheat is selected
 panel.bed_temperature                          60                # temp to set bed when preheat is selected
 
-# Example of a custom menu entry, which will show up in the Custom entry.
+# Custom menu entries.
+# ---------------------------------------------------------------------
 # NOTE _ gets converted to space in the menu and commands, | is used to separate multiple commands
+#
 custom_menu.power_on.enable                    true              #
 custom_menu.power_on.name                      Power_on          #
 custom_menu.power_on.command                   M80               #
@@ -251,6 +253,50 @@ custom_menu.power_on.command                   M80               #
 custom_menu.power_off.enable                   true              #
 custom_menu.power_off.name                     Power_off         #
 custom_menu.power_off.command                  M81               #
+
+# Extrude filament
+#
+custom_menu.extrude_long.enable                true              #
+custom_menu.extrude_long.name                  Extrude_100mm     #
+custom_menu.extrude_long.command               G91|G0_E100_F1500|G90
+custom_menu.extrude_medium.enable              true              #
+custom_menu.extrude_medium.name                Extrude_10mm      #
+custom_menu.extrude_medium.command             G91|G0_E10_F1500|G90
+custom_menu.extrude_short.enable               true              #
+custom_menu.extrude_short.name                 Extrude_1mm       #
+custom_menu.extrude_short.command              G91|G0_E1_F1500|G90
+# Retract filament
+#
+custom_menu.retract_100mm.enable               true              #
+custom_menu.retract_100mm.name                 Retract_100mm     #
+custom_menu.retract_100mm.command              G91|G0_E-100_F1500|G90
+custom_menu.retract_medium.enable              true              #
+custom_menu.retract_medium.name                Retract_10mm      #
+custom_menu.retract_medium.command             G91|G0_E-10_F1500|G90
+custom_menu.retract_short.enable               true              #
+custom_menu.retract_short.name                 Retract_1mm       #
+custom_menu.retract_short.command              G91|G0_E-1_F1500|G90
+
+custom_menu.probe1.enable                      true              #
+custom_menu.probe1.name                        Prepare_probing   #
+custom_menu.probe1.command                     G28|G0_Z20        #
+custom_menu.probe2.enable                      true              #
+custom_menu.probe2.name                        Run_probe_sequence! #
+custom_menu.probe2.command                     G32               #
+
+custom_menu.move1.enable                       true              #
+custom_menu.move1.name                         Home XY           #
+custom_menu.move1.command                      G28_X0_Y0         #
+custom_menu.move2.enable                       true              #
+custom_menu.move2.name                         Move_to_1st_probe_point #
+custom_menu.move2.command                      G0_X100_Y20       #
+
+custom_menu.save0.enable                       true              #
+custom_menu.save0.name                         Save_config_(M500)#
+custom_menu.save0.command                      M500              #
+custom_menu.save1.enable                       true              #
+custom_menu.save1.name                         Set_Z0_(M306)     #
+custom_menu.save1.command                      M306_Z0           #
 
 # Only needed on a smoothieboard
 # ---------------------------------------------------------------------
