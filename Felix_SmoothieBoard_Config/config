@@ -10,14 +10,26 @@ gamma_max                                      215
 # ---------------------------------------------------------------------
 # Three Point Platform Compensation Strategy
 #
-leveling-strategy.three-point-leveling.enable         true        # a leveling strategy that probes three points to define a plane and keeps the Z parallel to that plane
-leveling-strategy.three-point-leveling.point1         100,20      # the first probe point (x,y) optional may be defined with M557
-leveling-strategy.three-point-leveling.point2         180,180     # the second probe point (x,y)
-leveling-strategy.three-point-leveling.point3         20,180      # the third probe point (x,y)
-leveling-strategy.three-point-leveling.home_first     true        # home the XY axis before probing
-leveling-strategy.three-point-leveling.tolerance      0.03        # the probe tolerance in mm, anything less that this will be ignored, default is 0.03mm
-leveling-strategy.three-point-leveling.probe_offsets  -27.5,0,0   # the probe offsets from nozzle, must be x,y,z, default is no offset
-leveling-strategy.three-point-leveling.save_plane     false       # set to true to allow the bed plane to be saved with M500 default is false
+#leveling-strategy.three-point-leveling.enable         true        # a leveling strategy that probes three points to define a plane and keeps the Z parallel to that plane
+#leveling-strategy.three-point-leveling.point1         100,20      # the first probe point (x,y) optional may be defined with M557
+#leveling-strategy.three-point-leveling.point2         180,180     # the second probe point (x,y)
+#leveling-strategy.three-point-leveling.point3         20,180      # the third probe point (x,y)
+#leveling-strategy.three-point-leveling.home_first     true        # home the XY axis before probing
+#leveling-strategy.three-point-leveling.tolerance      0.03        # the probe tolerance in mm, anything less that this will be ignored, default is 0.03mm
+#leveling-strategy.three-point-leveling.probe_offsets  -27.5,0,2   # the probe offsets from nozzle, must be x,y,z, default is no offset
+#leveling-strategy.three-point-leveling.save_plane     false       # set to true to allow the bed plane to be saved with M500 default is false
+
+# ---------------------------------------------------------------------
+# Grid level compensation
+# Probes a grid of user specified number of points on the bed and populates a data array
+# of offsets to be used with a bilinear offset calculation.
+#
+leveling-strategy.ZGrid-leveling.enable               true
+leveling-strategy.ZGrid-leveling.bed_x                200         # X bed size limit
+leveling-strategy.ZGrid-leveling.bed_y                200         # Y bed size limit
+leveling-strategy.ZGrid-leveling.rows                 5           # X divisions (Default 5)
+leveling-strategy.ZGrid-leveling.cols                 5           # Y divisions (Default 5)
+leveling-strategy.ZGrid-leveling.probe_offsets        -27.5,0,2
 
 # Optional Z probe, see http://smoothieware.org/zprobe
 # ---------------------------------------------------------------------
@@ -26,7 +38,8 @@ probe_pin                                      1.22!^           # optional pin f
 zprobe.enable                                  true             # set to true to enable a zprobe
 zprobe.probe_pin                               1.22!^           # pin probe is attached to if NC remove the !, default 1.29!^
 zprobe.slow_feedrate                           5                # mm/sec probe feed rate
-zprobe.fast_feedrate                           100              # move feedrate
+zprobe.fast_feedrate                           20               # move feedrate
+zprobe.probe_height                            10               # how much above bed to start probe NB only needed for G32 on delta
 zprobe.debounce_count                          0                # set if noisy
 
 # Speeds
@@ -50,7 +63,7 @@ z_acceleration                                 500              # Acceleration f
 acceleration_ticks_per_second                  1000             # Number of times per second the speed is updated
 junction_deviation                             0.05             # Similar to the old "max_jerk", in millimeters,
                                                                 # see https://github.com/grbl/grbl/blob/master/planner.c
-                                                                 # and https://github.com/grbl/grbl/wiki/Configuring-Grbl-v0.8
+                                                                # and https://github.com/grbl/grbl/wiki/Configuring-Grbl-v0.8
 
 # Endstops
 # ---------------------------------------------------------------------
@@ -288,15 +301,41 @@ custom_menu.move1.enable                       true              #
 custom_menu.move1.name                         Home XY           #
 custom_menu.move1.command                      G28_X0_Y0         #
 custom_menu.move2.enable                       true              #
-custom_menu.move2.name                         Move_to_1st_probe_point #
-custom_menu.move2.command                      G0_X100_Y20       #
+custom_menu.move2.name                         Move_to_bed_center #
+custom_menu.move2.command                      G0_X100_Y100      #
+custom_menu.move3.enable                       true              #
+custom_menu.move3.name                         Move_to_set_Z0    #
+custom_menu.move3.command                      G0_X100_Y0        #
 
 custom_menu.save0.enable                       true              #
-custom_menu.save0.name                         Save_config_(M500)#
-custom_menu.save0.command                      M500              #
+custom_menu.save0.name                         Save_ZGrid_(M374) #
+custom_menu.save0.command                      M374              #
+custom_menu.load0.enable                       true              #
+custom_menu.load0.name                         Load_ZGrid_(M375) #
+custom_menu.load0.command                      M375              #
+
 custom_menu.save1.enable                       true              #
 custom_menu.save1.name                         Set_Z0_(M306)     #
 custom_menu.save1.command                      M306_Z0           #
+custom_menu.save2.enable                       true              #
+custom_menu.save2.name                         Save_config_(M500)#
+custom_menu.save2.command                      M500              #
+
+custom_menu.fan0.enable                        true              #
+custom_menu.fan0.name                          Fan_Off           #
+custom_menu.fan0.command                       M107              #
+custom_menu.fan1.enable                        true              #
+custom_menu.fan1.name                          Fan_25pct         #
+custom_menu.fan1.command                       M106_S63          #
+custom_menu.fan2.enable                        true              #
+custom_menu.fan2.name                          Fan_50pct         #
+custom_menu.fan2.command                       M106_S127         #
+custom_menu.fan3.enable                        true              #
+custom_menu.fan3.name                          Fan_75pct         #
+custom_menu.fan3.command                       M106_S191         #
+custom_menu.fan4.enable                        true              #
+custom_menu.fan4.name                          Fan_100pct        #
+custom_menu.fan4.command                       M106_S255         #
 
 # Only needed on a smoothieboard
 # ---------------------------------------------------------------------
