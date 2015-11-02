@@ -18,7 +18,7 @@ gamma_max                                    280
 # ---------------------------------------------------------------------
 arm_solution                                 linear_delta     # default linear_delta, you can also try kossel
 arm_radius                                   145.00           # this is the horiontal distance from hinge to hinge when the effector is centered
-arm_length                                   295.00           # length of the delta arms (hopefully they're all the same!)
+arm_length                                   287.50           # length of the delta arms (hopefully they're all the same!)
 
 
 # If you have a Z probe, you can select a calibration strategy here
@@ -35,7 +35,7 @@ comprehensive-delta.probe_priming                         1                # if 
 comprehensive-delta.probe_acceleration                    75               # acceleration will be temporarily set to this during probing; original is restored later; 100 is a good value
 comprehensive-delta.probe_offset_x                        0                # distance between the probe and the nozzle
 comprehensive-delta.probe_offset_y                        0                #
-comprehensive-delta.probe_offset_z                        5                #
+comprehensive-delta.probe_offset_z                        12.5             #
 
 
 # Optional Z probe, see http://smoothieware.org/zprobe
@@ -244,7 +244,7 @@ temperatureswitch.hotend.cooldown_poll       5                # poll cooldown at
 # LCD Panel http://smoothieware.org/panel
 # ---------------------------------------------------------------------
 # -Example viki2 config for an azteeg miniV2 with IDC cable
-panel.enable                                 true             # set to true to enable the panel code
+panel.enable                                 true              # set to true to enable the panel code
 panel.lcd                                    viki2             # set type of panel
 panel.spi_channel                            0                 # set spi channel to use P0_18,P0_15 MOSI,SCLK
 panel.spi_cs_pin                             0.16              # set spi chip select
