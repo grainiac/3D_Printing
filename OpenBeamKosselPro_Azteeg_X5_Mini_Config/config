@@ -332,7 +332,23 @@ custom_menu.save1.name                         Set_Z0_(M306)     #
 custom_menu.save1.command                      M306_Z0           #
 
 
-# Azteeg specific settings - do not change!
+custom_menu.fan0.enable                        true              #
+custom_menu.fan0.name                          Fan_Off           #
+custom_menu.fan0.command                       M107              #
+custom_menu.fan1.enable                        true              #
+custom_menu.fan1.name                          Fan_25pct         #
+custom_menu.fan1.command                       M106_S63          #
+custom_menu.fan2.enable                        true              #
+custom_menu.fan2.name                          Fan_50pct         #
+custom_menu.fan2.command                       M106_S127         #
+custom_menu.fan3.enable                        true              #
+custom_menu.fan3.name                          Fan_75pct         #
+custom_menu.fan3.command                       M106_S191         #
+custom_menu.fan4.enable                        true              #
+custom_menu.fan4.name                          Fan_100pct        #
+custom_menu.fan4.command                       M106_S255         #
+
+# Only needed on a smoothieboard
 # ---------------------------------------------------------------------
 currentcontrol_module_enable                 true             #
 digipot_max_current                          2.4              # max current
