@@ -16,7 +16,7 @@ gamma_max                                      215
 #leveling-strategy.three-point-leveling.point3         20,180      # the third probe point (x,y)
 #leveling-strategy.three-point-leveling.home_first     true        # home the XY axis before probing
 #leveling-strategy.three-point-leveling.tolerance      0.03        # the probe tolerance in mm, anything less that this will be ignored, default is 0.03mm
-#leveling-strategy.three-point-leveling.probe_offsets  -27.5,0,2   # the probe offsets from nozzle, must be x,y,z, default is no offset
+#leveling-strategy.three-point-leveling.probe_offsets  -27.5,0,0   # the probe offsets from nozzle, must be x,y,z, default is no offset
 #leveling-strategy.three-point-leveling.save_plane     false       # set to true to allow the bed plane to be saved with M500 default is false
 
 # ---------------------------------------------------------------------
@@ -29,17 +29,14 @@ leveling-strategy.ZGrid-leveling.bed_x                200         # X bed size l
 leveling-strategy.ZGrid-leveling.bed_y                200         # Y bed size limit
 leveling-strategy.ZGrid-leveling.rows                 5           # X divisions (Default 5)
 leveling-strategy.ZGrid-leveling.cols                 5           # Y divisions (Default 5)
-leveling-strategy.ZGrid-leveling.probe_offsets        -27.5,0,2
+leveling-strategy.ZGrid-leveling.probe_offsets        -27.5,0,0
 
 # Optional Z probe, see http://smoothieware.org/zprobe
 # ---------------------------------------------------------------------
-probe                                          endstop
-probe_pin                                      1.22!^           # optional pin for probe
 zprobe.enable                                  true             # set to true to enable a zprobe
-zprobe.probe_pin                               1.22!^           # pin probe is attached to if NC remove the !, default 1.29!^
+zprobe.probe_pin                               1.23^!           # pin probe is attached to if NC remove the !, default 1.29!^
 zprobe.slow_feedrate                           5                # mm/sec probe feed rate
 zprobe.fast_feedrate                           20               # move feedrate
-zprobe.probe_height                            10               # how much above bed to start probe NB only needed for G32 on delta
 zprobe.debounce_count                          0                # set if noisy
 
 # Speeds
