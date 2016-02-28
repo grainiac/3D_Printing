@@ -8,16 +8,16 @@ M205 X0.01000 Z-1.00000 S0.00000
 ;Max feedrates in mm/sec, XYZ cartesian, ABC actuator:
 M203 X500.00000 Y500.00000 Z500.00000 A500.00000 B500.00000 C500.00000
 ;Optional arm solution specific settings:
-M665 A0.00000 B1.30842 C1.30842 D-0.28784 E0.05617 F-0.32111 L287.14853
-M665 R144.29280
+M665 A0.00000 B0.61725 C0.61725 D-0.58075 E-0.37574 F-0.11041 H1.00000 I1.00000
+M665 J1.00000 L287.24231 R144.83554
 ;Motor currents:
 M907 X1.00000 Y1.00000 Z1.00000 E1.00000 
 ;Home offset (mm):
-M206 X0.00 Y0.00 Z0.00
+M206 X0.00 Y0.00 Z-0.80
 ;Trim (mm):
-M666 X0.000 Y-0.059 Z-0.148
+M666 X-0.381 Y0.000 Z-1.636
 ;Max Z
-M665 Z282.525
+M665 Z282.230
 ;E Steps per mm:
 M92 E930.0000 P5993
 ;E Filament diameter:
@@ -26,19 +26,11 @@ M200 D0.0000 P5993
 M207 S3.0000 F2700.0000 Z0.0000 Q6000.0000 P5993
 ;E retract recover length, feedrate:
 M208 S0.0000 F480.0000 P5993
-;E acceleration mm/sec²:
+;E acceleration mm/sec^2:
 M204 E3000.0000 P5993
-;E max feed rate mm/sec:
-M203 E1000.0000 P5993
 ;PID settings:
 M301 S0 P50.0000 I3.9000 D163.0000 X255.0000 Y255
-;Max temperature setting:
-M143 S0 P300.0000
 ;PID settings:
 M301 S1 P260.7000 I10.1930 D1667.0000 X255.0000 Y255
-;Max temperature setting:
-M143 S1 P300.0000
-;Probe feedrates Slow/fast(K)/Return (mm/sec) max_z (mm) height (mm):
-M670 S3.00 K70.00 R0.00 Z280.00 H10.00
-;ABC=Shimming data; D=Shimming; E=Depth map enable; Z=Master enable
-M667 A0.4320 B0.2235 C-0.0838 D1 E1 Z1
+;ABC=Shimming data; D=Shimming; E=Depth map; Z=Master enable
+M667 A0.5212 B0.3776 C-0.0842 D1 E1 Z1

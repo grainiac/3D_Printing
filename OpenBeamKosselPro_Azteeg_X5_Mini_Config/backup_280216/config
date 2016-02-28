@@ -36,7 +36,7 @@ comprehensive-delta.probe_acceleration                    75               # acc
 comprehensive-delta.probe_offset_x                        0                # distance between the probe and the nozzle
 comprehensive-delta.probe_offset_y                        0                #
 comprehensive-delta.probe_offset_z                        12.5             #
-comprehensive-delta.probe_ignore_bed_temp                 true             # Dont wait for bed temp to stabilize (ONLY use this if you DONT have a heated bed!)
+
 
 # Optional Z probe, see http://smoothieware.org/zprobe
 # ---------------------------------------------------------------------
