@@ -2,17 +2,19 @@
 ;Steps per unit:
 M92 X78.00000 Y78.00000 Z1600.00000
 ;Acceleration mm/sec^2:
-M204 S3000.00000 Z500.00000
+M204 S3000.00000 Z500.00000 
 ;X- Junction Deviation, Z- Z junction deviation, S - Minimum Planner speed mm/sec:
 M205 X0.05000 Z-1.00000 S0.00000
-;Max feedrates in mm/sec, XYZ cartesian, ABC actuator:
-M203 X500.00000 Y500.00000 Z5.00000 A500.00000 B500.00000 C5.00000
+;Max cartesian feedrates in mm/sec:
+M203 X500.00000 Y500.00000 Z5.00000
+;Max actuator feedrates in mm/sec:
+M203.1 X500.00000 Y500.00000 Z5.00000
 ;WCS settings
 G54
 ;Digipot Motor currents:
-M907 X1.00000 Y1.00000 Z1.00000 E1.00000 
+M907 X1.50000 Y1.50000 Z1.50000 E1.00000 
 ;Home offset (mm):
-M206 X0.00 Y0.00 Z1.30
+M206 X0.00 Y0.00 Z-0.62
 ;E Steps per mm:
 M92 E462.0000 P57988
 ;E Filament diameter:
@@ -35,7 +37,7 @@ M301 S1 P176.0000 I7.6380 D1014.0000 X255.0000 Y255
 M143 S1 P300.0000
 ;Probe feedrates Slow/fast(K)/Return (mm/sec) max_z (mm) height (mm):
 M670 S5.00 K20.00 R0.00 Z215.00 H5.00
-;Load default grid
-M375
 ;Probe offsets:
-M565 X-27.50000 Y0.00000 Z0.00000
+M565 X-32.50000 Y0.00000 Z0.00000
+;Load saved grid
+M375

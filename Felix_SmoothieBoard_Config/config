@@ -24,17 +24,20 @@ gamma_max                                      215
 # Probes a grid of user specified number of points on the bed and populates a data array
 # of offsets to be used with a bilinear offset calculation.
 #
-leveling-strategy.ZGrid-leveling.enable               true
-leveling-strategy.ZGrid-leveling.bed_x                200         # X bed size limit
-leveling-strategy.ZGrid-leveling.bed_y                200         # Y bed size limit
-leveling-strategy.ZGrid-leveling.rows                 5           # X divisions (Default 5)
-leveling-strategy.ZGrid-leveling.cols                 5           # Y divisions (Default 5)
-leveling-strategy.ZGrid-leveling.probe_offsets        -27.5,0,0
+leveling-strategy.delta-grid.enable               true
+leveling-strategy.delta-grid.radius               100
+leveling-strategy.delta-grid.size                 7
+leveling-strategy.delta-grid.max_x                100
+leveling-strategy.delta-grid.max_y                100
+leveling-strategy.delta-grid.initial_height       20
+leveling-strategy.delta-grid.probe_offsets        -32.5,0,0
+leveling-strategy.delta-grid.save                 true
+mm_per_line_segment 1                                           # necessary for cartesians using delta-grid
 
 # Optional Z probe, see http://smoothieware.org/zprobe
 # ---------------------------------------------------------------------
 zprobe.enable                                  true             # set to true to enable a zprobe
-zprobe.probe_pin                               1.23^!           # pin probe is attached to if NC remove the !, default 1.29!^
+zprobe.probe_pin                               1.22^!           # pin probe is attached to if NC remove the !, default 1.29!^
 zprobe.slow_feedrate                           5                # mm/sec probe feed rate
 zprobe.fast_feedrate                           20               # move feedrate
 zprobe.debounce_count                          0                # set if noisy
@@ -68,13 +71,13 @@ endstops_enable                                true             # the endstop mo
 alpha_min_endstop                              1.24^            # add a ! to invert if endstop is NO connected to ground
 alpha_max_endstop                              1.25^            # NOTE set to nc if this is not installed
 alpha_homing_direction                         home_to_min      # or set to home_to_max and set alpha_max
-alpha_min                                      0                # this gets loaded after homing when home_to_min is set
+alpha_min                                      -105             # this gets loaded after homing when home_to_min is set
 alpha_max                                      200              # this gets loaded after homing when home_to_max is set
 
 beta_min_endstop                               1.26^            #
 beta_max_endstop                               1.27^            #
 beta_homing_direction                          home_to_min      #
-beta_min                                       0                #
+beta_min                                       -105             #
 beta_max                                       200              #
 
 gamma_min_endstop                              1.28^            # was 1.28^ before bed probe connected
@@ -123,19 +126,19 @@ z_axis_max_speed                               300              # mm/min
 alpha_step_pin                                 2.0              # Pin for alpha stepper step signal
 alpha_dir_pin                                  0.5              # Pin for alpha stepper direction
 alpha_en_pin                                   0.4              # Pin for alpha enable pin
-alpha_current                                  1.0              # X stepper motor current
+alpha_current                                  1.5              # X stepper motor current
 alpha_max_rate                                 30000.0          # mm/min
 
 beta_step_pin                                  2.1              # Pin for beta stepper step signal
 beta_dir_pin                                   0.11             # Pin for beta stepper direction
 beta_en_pin                                    0.10             # Pin for beta enable
-beta_current                                   1.0              # Y stepper motor current
+beta_current                                   1.5              # Y stepper motor current
 beta_max_rate                                  30000.0          # mm/min
 
 gamma_step_pin                                 2.2              # Pin for gamma stepper step signal
 gamma_dir_pin                                  0.20             # Pin for gamma stepper direction
 gamma_en_pin                                   0.19             # Pin for gamma enable
-gamma_current                                  1.0              # Z stepper motor current
+gamma_current                                  1.5              # Z stepper motor current
 gamma_max_rate                                 300.0            # mm/min
 
 # Extruder module configuration
@@ -147,7 +150,7 @@ extruder.hotend.acceleration                   1500             # Acceleration f
 extruder.hotend.max_speed                      50               # mm/s
 
 extruder.hotend.step_pin                       2.3              # Pin for extruder step signal
-extruder.hotend.dir_pin                        0.22             # Pin for extruder dir signal
+extruder.hotend.dir_pin                        0.22!            # Pin for extruder dir signal
 extruder.hotend.en_pin                         0.21             # Pin for extruder enable signal
 delta_current                                  1.0              # First extruder stepper motor current
 
@@ -264,45 +267,20 @@ custom_menu.power_off.enable                   true              #
 custom_menu.power_off.name                     Power_off         #
 custom_menu.power_off.command                  M81               #
 
-# Extrude filament
-#
-custom_menu.extrude_long.enable                true              #
-custom_menu.extrude_long.name                  Extrude_100mm     #
-custom_menu.extrude_long.command               G91|G0_E100_F1500|G90
-custom_menu.extrude_medium.enable              true              #
-custom_menu.extrude_medium.name                Extrude_10mm      #
-custom_menu.extrude_medium.command             G91|G0_E10_F1500|G90
-custom_menu.extrude_short.enable               true              #
-custom_menu.extrude_short.name                 Extrude_1mm       #
-custom_menu.extrude_short.command              G91|G0_E1_F1500|G90
-# Retract filament
-#
-custom_menu.retract_100mm.enable               true              #
-custom_menu.retract_100mm.name                 Retract_100mm     #
-custom_menu.retract_100mm.command              G91|G0_E-100_F1500|G90
-custom_menu.retract_medium.enable              true              #
-custom_menu.retract_medium.name                Retract_10mm      #
-custom_menu.retract_medium.command             G91|G0_E-10_F1500|G90
-custom_menu.retract_short.enable               true              #
-custom_menu.retract_short.name                 Retract_1mm       #
-custom_menu.retract_short.command              G91|G0_E-1_F1500|G90
 
+custom_menu.probe0.enable                      true              #
+custom_menu.probe0.name                        Home_(G28)        #
+custom_menu.probe0.command                     G28               #
 custom_menu.probe1.enable                      true              #
 custom_menu.probe1.name                        Prepare_probing   #
-custom_menu.probe1.command                     G28|G0_Z20        #
+custom_menu.probe1.command                     G28|G0_X0_Y0_Z20_F1500  #
 custom_menu.probe2.enable                      true              #
 custom_menu.probe2.name                        Run_probe_sequence! #
-custom_menu.probe2.command                     G32               #
+custom_menu.probe2.command                     G31               #
 
 custom_menu.move1.enable                       true              #
-custom_menu.move1.name                         Home XY           #
-custom_menu.move1.command                      G28_X0_Y0         #
-custom_menu.move2.enable                       true              #
-custom_menu.move2.name                         Move_to_bed_center #
-custom_menu.move2.command                      G0_X100_Y100      #
-custom_menu.move3.enable                       true              #
-custom_menu.move3.name                         Move_to_set_Z0    #
-custom_menu.move3.command                      G0_X100_Y0        #
+custom_menu.move1.name                         Home_4_Print      #
+custom_menu.move1.command                      G28|G0_Z5_F1500|G0_X0_Y0_F1500|G0_Z0_F1500#
 
 custom_menu.save0.enable                       true              #
 custom_menu.save0.name                         Save_ZGrid_(M374) #
@@ -333,6 +311,30 @@ custom_menu.fan3.command                       M106_S191         #
 custom_menu.fan4.enable                        true              #
 custom_menu.fan4.name                          Fan_100pct        #
 custom_menu.fan4.command                       M106_S255         #
+
+# Extrude filament
+#
+custom_menu.extrude_long.enable                true              #
+custom_menu.extrude_long.name                  Extrude_100mm     #
+custom_menu.extrude_long.command               G91|G0_E100_F1500|G90
+custom_menu.extrude_medium.enable              true              #
+custom_menu.extrude_medium.name                Extrude_10mm      #
+custom_menu.extrude_medium.command             G91|G0_E10_F1500|G90
+custom_menu.extrude_short.enable               true              #
+custom_menu.extrude_short.name                 Extrude_1mm       #
+custom_menu.extrude_short.command              G91|G0_E1_F1500|G90
+# Retract filament
+#
+custom_menu.retract_100mm.enable               true              #
+custom_menu.retract_100mm.name                 Retract_100mm     #
+custom_menu.retract_100mm.command              G91|G0_E-100_F1500|G90
+custom_menu.retract_medium.enable              true              #
+custom_menu.retract_medium.name                Retract_10mm      #
+custom_menu.retract_medium.command             G91|G0_E-10_F1500|G90
+custom_menu.retract_short.enable               true              #
+custom_menu.retract_short.name                 Retract_1mm       #
+custom_menu.retract_short.command              G91|G0_E-1_F1500|G90
+
 
 # Only needed on a smoothieboard
 # ---------------------------------------------------------------------
