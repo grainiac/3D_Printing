@@ -52,15 +52,15 @@ mm_per_arc_segment                             0.5              # Arcs are cut i
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 # ---------------------------------------------------------------------
-alpha_steps_per_mm                             76               # Steps per mm for alpha stepper
-beta_steps_per_mm                              76               # Steps per mm for beta stepper
-gamma_steps_per_mm                             1600             # Steps per mm for gamma stepper
+alpha_steps_per_mm                             76.19999         # Steps per mm for alpha stepper
+beta_steps_per_mm                              76.19999         # Steps per mm for beta stepper
+gamma_steps_per_mm                             1590             # Steps per mm for gamma stepper
 
 # Planner module configuration : Look-ahead and acceleration configuration
 # ---------------------------------------------------------------------
 planner_queue_size                             32               # DO NOT CHANGE THIS UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING
-acceleration                                   3000             # Acceleration in mm/second/second.
-z_acceleration                                 500              # Acceleration for Z only moves in mm/s^2, 0 uses acceleration which is the default. DO NOT SET ON A DELTA
+acceleration                                   1750             # Acceleration in mm/second/second.
+z_acceleration                                 100              # Acceleration for Z only moves in mm/s^2, 0 uses acceleration which is the default. DO NOT SET ON A DELTA
 acceleration_ticks_per_second                  1000             # Number of times per second the speed is updated
 junction_deviation                             0.05             # Similar to the old "max_jerk", in millimeters,
                                                                 # see https://github.com/grbl/grbl/blob/master/planner.c
@@ -142,9 +142,9 @@ gamma_max_rate                                 300.0            # mm/min
 # ---------------------------------------------------------------------
 extruder.hotend.enable                         true             # Whether to activate the extruder module at all. All configuration is ignored if false
 extruder.hotend.steps_per_mm                   462              # Steps per mm for extruder stepper
-extruder.hotend.default_feed_rate              1500             # Default rate ( mm/minute ) for moves where only the extruder moves
-extruder.hotend.acceleration                   3000             # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
-extruder.hotend.max_speed                      25               # mm/s
+extruder.hotend.default_feed_rate              600              # Default rate ( mm/minute ) for moves where only the extruder moves
+extruder.hotend.acceleration                   2000             # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
+extruder.hotend.max_speed                      50               # mm/s
 
 extruder.hotend.step_pin                       2.0              # Pin for extruder step signal
 extruder.hotend.dir_pin                        0.5!              # Pin for extruder dir signal
