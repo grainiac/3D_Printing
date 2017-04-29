@@ -5,7 +5,7 @@ arm_solution		                                   cartesian   # Frankenstein Feli
 
 # The build volume height
 # ---------------------------------------------------------------------
-gamma_max                                              215
+gamma_max                                              195
 
 # If you have a Z probe, you can select a calibration strategy here
 # ---------------------------------------------------------------------
@@ -26,12 +26,12 @@ gamma_max                                              215
 # of offsets to be used with a bilinear offset calculation.
 #
 leveling-strategy.delta-grid.enable               true
-leveling-strategy.delta-grid.radius               100
+leveling-strategy.delta-grid.radius               97.5
 leveling-strategy.delta-grid.size                 7
-leveling-strategy.delta-grid.max_x                100
-leveling-strategy.delta-grid.max_y                100
+leveling-strategy.delta-grid.max_x                97.5
+leveling-strategy.delta-grid.max_y                97.5
 leveling-strategy.delta-grid.initial_height       20
-leveling-strategy.delta-grid.probe_offsets        -32.5,0,0
+leveling-strategy.delta-grid.probe_offsets        -28,0,0
 leveling-strategy.delta-grid.save                 true
 mm_per_line_segment 1                                           # necessary for cartesians using delta-grid
 
@@ -52,8 +52,8 @@ mm_per_arc_segment                             0.5              # Arcs are cut i
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 # ---------------------------------------------------------------------
-alpha_steps_per_mm                             78               # Steps per mm for alpha stepper
-beta_steps_per_mm                              78               # Steps per mm for beta stepper
+alpha_steps_per_mm                             76               # Steps per mm for alpha stepper
+beta_steps_per_mm                              76               # Steps per mm for beta stepper
 gamma_steps_per_mm                             1600             # Steps per mm for gamma stepper
 
 # Planner module configuration : Look-ahead and acceleration configuration
@@ -73,13 +73,13 @@ alpha_min_endstop                              1.29^            # add a ! to inv
 alpha_max_endstop                              nc               # NOTE set to nc if this is not installed
 alpha_homing_direction                         home_to_min      # or set to home_to_max and set alpha_max
 alpha_min                                      -105             # this gets loaded after homing when home_to_min is set
-alpha_max                                      200              # this gets loaded after homing when home_to_max is set
+alpha_max                                      195              # this gets loaded after homing when home_to_max is set
 
 beta_min_endstop                               1.26^            #
 beta_max_endstop                               nc               #
 beta_homing_direction                          home_to_min      #
 beta_min                                       -105             #
-beta_max                                       200              #
+beta_max                                       195              #
 
 gamma_min_endstop                              1.28^            # was 1.28^ before bed probe connected
 gamma_max_endstop                              nc               #
@@ -103,13 +103,6 @@ gamma_homing_retract_mm                        1                # "
 endstop_debounce_count                         100              # uncomment if you get noise on your endstops, default is 100
                                                                 # Lower values mean being more careful, higher values means being
                                                                 # faster and have more jerk
-
-# Limit switches (optional):
-# Will stop machine if any enabled limit switch is triggered
-# ---------------------------------------------------------------------
-#alpha_limit_enable                            true             # set to true to enable X min and max limit switches
-#beta_limit_enable                             true             # set to true to enable Y min and max limit switches
-#gamma_limit_enable                            true             # set to true to enable Z min and max limit switches
 
 # Stepper module configuration
 # ---------------------------------------------------------------------
@@ -149,12 +142,12 @@ gamma_max_rate                                 300.0            # mm/min
 # ---------------------------------------------------------------------
 extruder.hotend.enable                         true             # Whether to activate the extruder module at all. All configuration is ignored if false
 extruder.hotend.steps_per_mm                   462              # Steps per mm for extruder stepper
-extruder.hotend.default_feed_rate              600              # Default rate ( mm/minute ) for moves where only the extruder moves
-extruder.hotend.acceleration                   1500             # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
-extruder.hotend.max_speed                      50               # mm/s
+extruder.hotend.default_feed_rate              1500             # Default rate ( mm/minute ) for moves where only the extruder moves
+extruder.hotend.acceleration                   3000             # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
+extruder.hotend.max_speed                      25               # mm/s
 
 extruder.hotend.step_pin                       2.0              # Pin for extruder step signal
-extruder.hotend.dir_pin                        0.5!             # Pin for extruder dir signal
+extruder.hotend.dir_pin                        0.5!              # Pin for extruder dir signal
 extruder.hotend.en_pin                         0.4              # Pin for extruder enable signal
 delta_current                                  1.0              # First extruder stepper motor current
 
@@ -294,7 +287,7 @@ custom_menu.probe2.command                     G31               #
 
 custom_menu.move1.enable                       true              #
 custom_menu.move1.name                         Home_4_Print      #
-custom_menu.move1.command                      G28|G0_Z5_F1500|G0_X0_Y0_F1500|G0_Z0_F1500#
+custom_menu.move1.command                      G28|G0_Z5_F1500|G0_X0_Y0_F1500|G0_Z0_F1500 #
 
 custom_menu.save0.enable                       true              #
 custom_menu.save0.name                         Save_ZGrid_(M374) #
@@ -305,7 +298,7 @@ custom_menu.load0.command                      M375              #
 
 custom_menu.save1.enable                       true              #
 custom_menu.save1.name                         Set_Z0_(M306)     #
-custom_menu.save1.command                      M306_Z0           #
+custom_menu.save1.command                      M306_Z0|M500      #
 custom_menu.save2.enable                       true              #
 custom_menu.save2.name                         Save_config_(M500)#
 custom_menu.save2.command                      M500              #
