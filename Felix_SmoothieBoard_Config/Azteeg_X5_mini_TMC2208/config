@@ -7,19 +7,6 @@ arm_solution		                                   cartesian   # Frankenstein Feli
 # ---------------------------------------------------------------------
 gamma_max                                              195
 
-# If you have a Z probe, you can select a calibration strategy here
-# ---------------------------------------------------------------------
-# Three Point Platform Compensation Strategy
-#
-#leveling-strategy.three-point-leveling.enable         true        # a leveling strategy that probes three points to define a plane and keeps the Z parallel to that plane
-#leveling-strategy.three-point-leveling.point1         100,20      # the first probe point (x,y) optional may be defined with M557
-#leveling-strategy.three-point-leveling.point2         180,180     # the second probe point (x,y)
-#leveling-strategy.three-point-leveling.point3         20,180      # the third probe point (x,y)
-#leveling-strategy.three-point-leveling.home_first     true        # home the XY axis before probing
-#leveling-strategy.three-point-leveling.tolerance      0.03        # the probe tolerance in mm, anything less that this will be ignored, default is 0.03mm
-#leveling-strategy.three-point-leveling.probe_offsets  -27.5,0,0   # the probe offsets from nozzle, must be x,y,z, default is no offset
-#leveling-strategy.three-point-leveling.save_plane     false       # set to true to allow the bed plane to be saved with M500 default is false
-
 # ---------------------------------------------------------------------
 # Grid level compensation
 # Probes a grid of user specified number of points on the bed and populates a data array
@@ -238,18 +225,6 @@ panel.buzz_pin                                 0.25              # pin for buzze
 panel.blue_led_pin                             4.29              # pin for blue led on viki2 on EXP1
 panel.red_led_pin                              2.8               # pin for red led on viki2 on EXP1
 
-# mini Viki config for an Azteeg X5 mini V3 with IDC cable
-#panel.lcd                                      mini_viki2        # set type of panel
-#panel.spi_channel                              0                 # set spi channel to use P0_18,P0_15 MOSI,SCLK
-#panel.spi_cs_pin                               0.16              # set spi chip select
-#panel.encoder_a_pin                            3.25!^            # encoder pin
-#panel.encoder_b_pin                            3.26!^            # encoder pin
-#panel.click_button_pin                         2.11!^            # click button
-#panel.a0_pin                                   2.6               # st7565 needs an a0
-#panel.contrast                                 4                 # override contrast setting (default is 9) miniViki (4 or lower)
-#panel.encoder_resolution                       1                 # override number of clicks to move 1 item (default is 2)
-#panel.menu_offset                              1                 # here controls how sensitive the menu is. some panels will need 1
-
 panel.external_sd                              true              # set to true if there is an extrernal sdcard on the panel
 panel.external_sd.spi_channel                  0                 # set spi channel the sdcard is on
 panel.external_sd.spi_cs_pin                   1.23              # set spi chip select for the sdcard
@@ -273,7 +248,6 @@ custom_menu.power_on.command                   M80               #
 custom_menu.power_off.enable                   true              #
 custom_menu.power_off.name                     Power_off         #
 custom_menu.power_off.command                  M81               #
-
 
 custom_menu.probe0.enable                      true              #
 custom_menu.probe0.name                        Home_(G28)        #
@@ -342,14 +316,14 @@ custom_menu.retract_short.enable               true              #
 custom_menu.retract_short.name                 Retract_1mm       #
 custom_menu.retract_short.command              G91|G0_E-1_F1500|G90
 
+# Serial communications configuration ( baud rate default to 9600 if undefined )
+# ---------------------------------------------------------------------
+uart0.baud_rate                              115200              # Baud rate for the default hardware serial port
+second_usb_serial_enable                     true                # This enables a second usb serial port (to have both pronterface and a terminal connected)
+
 # network settings
 # ---------------------------------------------------------------------
 network.enable                                 false            # enable the ethernet network services
 network.webserver.enable                       false            # enable the webserver
 network.telnet.enable                          true             # enable the telnet server
 network.ip_address                             auto             # use dhcp to get ip address
-# uncomment the 3 below to manually setup ip address
-#network.ip_address                            192.168.3.222    # the IP address
-#network.ip_mask                               255.255.255.0    # the ip mask
-#network.ip_gateway                            192.168.3.1      # the gateway address
-#network.mac_override                          xx.xx.xx.xx.xx.xx  # override the mac address, only do this if you have a conflict
