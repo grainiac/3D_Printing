@@ -39,9 +39,9 @@ mm_per_arc_segment                             0.5              # Arcs are cut i
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 # ---------------------------------------------------------------------
-alpha_steps_per_mm                             76.19999         # Steps per mm for alpha stepper
-beta_steps_per_mm                              76.19999         # Steps per mm for beta stepper
-gamma_steps_per_mm                             1590             # Steps per mm for gamma stepper
+alpha_steps_per_mm                             77               # Steps per mm for alpha stepper
+beta_steps_per_mm                              77               # Steps per mm for beta stepper
+gamma_steps_per_mm                             1600             # Steps per mm for gamma stepper
 
 # Planner module configuration : Look-ahead and acceleration configuration
 # ---------------------------------------------------------------------
