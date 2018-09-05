@@ -6,21 +6,13 @@ M204 S2000.00000
 ;X- Junction Deviation, Z- Z junction deviation, S - Minimum Planner speed mm/sec:
 M205 X0.01000 Z-1.00000 S0.00000
 ;Max cartesian feedrates in mm/sec:
-M203 X200.00000 Y200.00000 Z200.00000
+M203 X200.00000 Y200.00000 Z200.00000 S-1.00000
 ;Max actuator feedrates in mm/sec:
 M203.1 X200.00000 Y200.00000 Z200.00000 
 ;Optional arm solution specific settings:
-M665 L287.5000 R153.5885
-;WCS settings
-G54
+M665 L287.5000 R153.5209
 ;Digipot Motor currents:
 M907 X1.00000 Y1.00000 Z1.00000 A0.60000 
-;Home offset (mm):
-M206 X0.00 Y0.00 Z-2.76 
-;Trim (mm):
-M666 X-0.125 Y-0.235 Z-1.096
-;Max Z
-M665 Z250.000
 ;E Steps per mm:
 M92 E824.0000 P9677
 ;E Filament diameter:
@@ -34,15 +26,21 @@ M204 E4800.0000 P9677
 ;E max feed rate mm/sec:
 M203 E50.0000 P9677
 ;PID settings:
-M301 S0 P39.4000 I3.0810 D126.0000 X255.0000 Y255
+M301 S0 P39.6000 I2.6230 D150.0000 X255.0000 Y255
 ;Max temperature setting:
 M143 S0 P245.0000
 ;PID settings:
-M301 S1 P122.5000 I4.4460 D844.0000 X255.0000 Y255
+M301 S1 P222.9000 I9.7130 D1279.0000 X255.0000 Y255
 ;Max temperature setting:
 M143 S1 P130.0000
-;Probe feedrates Slow/fast(K)/Return (mm/sec) max_z (mm) height (mm):
-M670 S22.00 K66.00 R0.00 Z250.00 H15.00
+;Home offset (mm):
+M206 X0.00 Y0.00 Z3.72 
+;Trim (mm):
+M666 X-0.110 Y-0.963 Z-1.636
+;Max Z
+M665 Z250.000
+;Probe feedrates Slow/fast(K)/Return (mm/sec) max_z (mm) height (mm) dwell (s):
+M670 S22.00 K66.00 R0.00 Z250.00 H15.00 D0.00
 ;Probe offsets:
 M565 X0.00000 Y0.00000 Z0.00000
 ;Load saved grid

@@ -39,17 +39,17 @@ arm_length                                   287.50           # length of the de
 # run once, then run grid compensation
 # --------------------------------------------------
 leveling-strategy.delta-calibration.enable                true            # basic delta calibration
-leveling-strategy.delta-calibration.radius                110             # the probe radius in mm
-leveling-strategy.delta-calibration.initial_height        65              # height above bed to stop initial move
+leveling-strategy.delta-calibration.radius                115             # the probe radius in mm
+leveling-strategy.delta-calibration.initial_height        30              # height above bed to stop initial move
 
 # ---- Smoothieware's grid compensation ----
 leveling-strategy.delta-grid.enable                       true
-leveling-strategy.delta-grid.radius                       110
+leveling-strategy.delta-grid.radius                       115
 leveling-strategy.delta-grid.size                         7               # must be odd, 7 means 7 * 7 == 49 probe points
 leveling-strategy.delta-grid.do_home                      true
 leveling-strategy.delta-grid.probe_offsets                0,0,0           # probe offsets x,y,z
 leveling-strategy.delta-grid.save                         true
-leveling-strategy.delta-grid.initial_height               65
+leveling-strategy.delta-grid.initial_height               30
 
 
 # Optional Z probe, see http://smoothieware.org/zprobe
@@ -192,9 +192,9 @@ temperature_control.hotend.max_pwm             255              # max pwm, 64 is
 
 # Hotend PID configuration
 # ---------------------------------------------------------------------
-temperature_control.hotend.p_factor            39.4             # permanently set the PID values after an auto pid
-temperature_control.hotend.i_factor            3.081            #
-temperature_control.hotend.d_factor            126              #
+temperature_control.hotend.p_factor            39.6             # permanently set the PID values after an auto pid
+temperature_control.hotend.i_factor            2.623            #
+temperature_control.hotend.d_factor            150              #
 
 # Heated bed PID configuration
 # temperature_control.bed.thermistor can be one of the following:
@@ -212,9 +212,9 @@ temperature_control.bed.max_pwm                255              #
 temperature_control.bed.max_temp               130              #
 temperature_control.bed.designator             B                #
 
-temperature_control.bed.p_factor               122.5            #
-temperature_control.bed.i_factor               4.446            #
-temperature_control.bed.d_factor               844              #
+temperature_control.bed.p_factor               222.9            #
+temperature_control.bed.i_factor               9.713            #
+temperature_control.bed.d_factor               1279             #
 
 # Switch module for fan control
 # ---------------------------------------------------------------------
@@ -290,13 +290,15 @@ panel.bed_temperature                        70                # temp to set bed
 # ---------------------------------------------------------------------
 # NOTE _ gets converted to space in the menu and commands, | is used to separate multiple commands
 #
-custom_menu.power_on.enable                    true              #
-custom_menu.power_on.name                      Power_on          #
-custom_menu.power_on.command                   M80               #
+custom_menu.pause.enable                       true              #
+custom_menu.pause.name                         Pause_print       #
+custom_menu.pause.command                      M600              #
+after_suspend_gcode		               G91_G0E-5_G0Z50
+leave_heaters_on_suspend                       true
 
-custom_menu.power_off.enable                   true              #
-custom_menu.power_off.name                     Power_off         #
-custom_menu.power_off.command                  M81               #
+custom_menu.resume.enable                      true              #
+custom_menu.resume.name                        Resume_print      #
+custom_menu.resume.command                     M601              #
 
 custom_menu.move0.enable                       true              #
 custom_menu.move0.name                         Goto_Home         #
@@ -373,4 +375,4 @@ network.plan9.enable                         false            # enable the plan9
 # ---------------------------------------------------------------------
 kill_button_enable                           true             # set to true to enable a kill button
 kill_button_pin                              2.12             # kill button pin. default is same as pause button 2.12 (2.11 is another good choice)
-ï¿½
+Ã
