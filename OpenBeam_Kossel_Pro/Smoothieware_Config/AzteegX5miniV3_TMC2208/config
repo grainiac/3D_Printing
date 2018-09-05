@@ -39,17 +39,17 @@ arm_length                                   287.50           # length of the de
 # run once, then run grid compensation
 # --------------------------------------------------
 leveling-strategy.delta-calibration.enable                true            # basic delta calibration
-leveling-strategy.delta-calibration.radius                110             # the probe radius in mm
-leveling-strategy.delta-calibration.initial_height        65              # height above bed to stop initial move
+leveling-strategy.delta-calibration.radius                115             # the probe radius in mm
+leveling-strategy.delta-calibration.initial_height        30              # height above bed to stop initial move
 
 # ---- Smoothieware's grid compensation ----
 leveling-strategy.delta-grid.enable                       true
-leveling-strategy.delta-grid.radius                       110
+leveling-strategy.delta-grid.radius                       115
 leveling-strategy.delta-grid.size                         7               # must be odd, 7 means 7 * 7 == 49 probe points
 leveling-strategy.delta-grid.do_home                      true
 leveling-strategy.delta-grid.probe_offsets                0,0,0           # probe offsets x,y,z
 leveling-strategy.delta-grid.save                         true
-leveling-strategy.delta-grid.initial_height               65
+leveling-strategy.delta-grid.initial_height               30
 
 
 # Optional Z probe, see http://smoothieware.org/zprobe
