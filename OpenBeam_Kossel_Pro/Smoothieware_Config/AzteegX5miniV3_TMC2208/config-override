@@ -22,7 +22,7 @@ M207 S3.0000 F2700.0000 Z0.0000 Q6000.0000 P9677
 ;E retract recover length, feedrate:
 M208 S0.0000 F480.0000 P9677
 ;E acceleration mm/sec²:
-M204 E4800.0000 P9677
+M204 E1000.0000 P9677
 ;E max feed rate mm/sec:
 M203 E50.0000 P9677
 ;PID settings:

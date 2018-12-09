@@ -166,7 +166,7 @@ z_axis_max_speed                             12000.0          # mm/min
 extruder.BondtechQR.enable                      true           # Whether to activate the extruder module at all. All configuration is ignored if false
 extruder.BondtechQR.steps_per_mm                412            # TMC2100 -> 468 / RAPS128 -> 3680 / DRV8825 -> 916  # Steps per mm for extruder stepper
 extruder.BondtechQR.default_feed_rate           300            # Default rate ( mm/minute ) for moves where only the extruder moves
-extruder.BondtechQR.acceleration                4800           # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
+extruder.BondtechQR.acceleration                1000           # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
 extruder.BondtechQR.max_speed                   50             # mm/s
 
 extruder.BondtechQR.step_pin                    2.0            # Pin for extruder step signal
@@ -375,4 +375,4 @@ network.plan9.enable                         false            # enable the plan9
 # ---------------------------------------------------------------------
 kill_button_enable                           true             # set to true to enable a kill button
 kill_button_pin                              2.12             # kill button pin. default is same as pause button 2.12 (2.11 is another good choice)
-Ã
+ï¿½
