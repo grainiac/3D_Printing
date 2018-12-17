@@ -212,9 +212,9 @@ temperature_control.bed.max_pwm                255              #
 temperature_control.bed.max_temp               130              #
 temperature_control.bed.designator             B                #
 
-temperature_control.bed.p_factor               222.9            #
-temperature_control.bed.i_factor               9.713            #
-temperature_control.bed.d_factor               1279             #
+temperature_control.bed.p_factor               104.4            #
+temperature_control.bed.i_factor               4.143            #
+temperature_control.bed.d_factor               658              #
 
 # Switch module for fan control
 # ---------------------------------------------------------------------

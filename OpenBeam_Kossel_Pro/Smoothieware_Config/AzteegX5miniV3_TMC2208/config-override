@@ -10,7 +10,7 @@ M203 X200.00000 Y200.00000 Z200.00000 S-1.00000
 ;Max actuator feedrates in mm/sec:
 M203.1 X200.00000 Y200.00000 Z200.00000 
 ;Optional arm solution specific settings:
-M665 L287.5000 R153.3021
+M665 L287.5000 R153.5209
 ;Digipot Motor currents:
 M907 X1.00000 Y1.00000 Z1.00000 A0.60000 
 ;E Steps per mm:
@@ -25,18 +25,18 @@ M208 S0.0000 F480.0000 P9677
 M204 E1000.0000 P9677
 ;E max feed rate mm/sec:
 M203 E50.0000 P9677
-;PID settings:
+;PID settings, i_max, max_pwm:
 M301 S0 P39.6000 I2.6230 D150.0000 X255.0000 Y255
 ;Max temperature setting:
 M143 S0 P245.0000
-;PID settings:
-M301 S1 P222.9000 I9.7130 D1279.0000 X255.0000 Y255
+;PID settings, i_max, max_pwm:
+M301 S1 P104.3934 I4.1426 D657.6786 X255.0000 Y255
 ;Max temperature setting:
 M143 S1 P130.0000
 ;Home offset (mm):
-M206 X0.00 Y0.00 Z3.84 
+M206 X0.00 Y0.00 Z3.72 
 ;Trim (mm):
-M666 X0.000 Y-0.720 Z-1.424
+M666 X-0.078 Y-0.798 Z-1.346
 ;Max Z
 M665 Z250.000
 ;Probe feedrates Slow/fast(K)/Return (mm/sec) max_z (mm) height (mm) dwell (s):
