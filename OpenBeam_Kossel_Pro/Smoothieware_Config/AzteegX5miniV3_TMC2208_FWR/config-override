@@ -18,11 +18,11 @@ M92 E415.0000 P769
 ;E Filament diameter:
 M200 D0.0000 P769
 ;E retract length, feedrate:
-M207 S3.0000 F3000.0000 Z0.4000 Q3000.0000 P769
+M207 S3.0000 F2100.0000 Z0.4000 Q2100.0000 P769
 ;E retract recover length, feedrate:
-M208 S0.0000 F600.0000 P769
+M208 S0.0000 F2100.0000 P769
 ;E acceleration mm/sec²:
-M204 E1000.0000 P769
+M204 E2000.0000 P769
 ;E max feed rate mm/sec:
 M203 E50.0000 P769
 ;PID settings, i_max, max_pwm:
@@ -30,7 +30,7 @@ M301 S0 P39.6000 I2.6230 D150.0000 X255.0000 Y255
 ;Max temperature setting:
 M143 S0 P245.0000
 ;PID settings, i_max, max_pwm:
-M301 S1 P104.3934 I4.1426 D657.6786 X255.0000 Y255
+M301 S1 P105.9000 I2.8770 D975.0000 X255.0000 Y255
 ;Max temperature setting:
 M143 S1 P130.0000
 ;Home offset (mm):

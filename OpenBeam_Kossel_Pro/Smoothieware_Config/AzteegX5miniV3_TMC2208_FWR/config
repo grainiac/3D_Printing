@@ -164,17 +164,17 @@ z_axis_max_speed                             12000.0          # mm/min
 extruder.BondtechBMG.enable                      true           # Whether to activate the extruder module at all. All configuration is ignored if false
 extruder.BondtechBMG.steps_per_mm                415            # TMC2100 -> 468 / RAPS128 -> 3680 / DRV8825 -> 916  # Steps per mm for extruder stepper
 extruder.BondtechBMG.default_feed_rate           300            # Default rate ( mm/minute ) for moves where only the extruder moves
-extruder.BondtechBMG.acceleration                1000           # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
+extruder.BondtechBMG.acceleration                2000           # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
 extruder.BondtechBMG.max_speed                   50             # mm/s
 extruder.BondtechBMG.step_pin                    2.0            # Pin for extruder step signal
 extruder.BondtechBMG.dir_pin                     0.5!           # Pin for extruder dir signal
 extruder.BondtechBMG.en_pin                      0.4            # Pin for extruder enable signal
 extruder.BondtechBMG.retract_length              3.0            # retract length in mm
-extruder.BondtechBMG.retract_feedrate            50             # retract feedrate in mm/sec
+extruder.BondtechBMG.retract_feedrate            35             # retract feedrate in mm/sec
 extruder.BondtechBMG.retract_recover_length      0              # additional length for recover
-extruder.BondtechBMG.retract_recover_feedrate    10             # recover feedrate in mm/sec (should be less than retract feedrate)
+extruder.BondtechBMG.retract_recover_feedrate    35             # recover feedrate in mm/sec (should be less than retract feedrate)
 extruder.BondtechBMG.retract_zlift_length        0.4            # zlift on retract in mm, 0 disables
-extruder.BondtechBMG.retract_zlift_feedrate      3000           # zlift feedrate in mm/min (Note mm/min NOT mm/sec)
+extruder.BondtechBMG.retract_zlift_feedrate      2100           # zlift feedrate in mm/min (Note mm/min NOT mm/sec)
 delta_current                                    0.6            # max current in ampere
 
 # Hotend temperature control configuration
@@ -213,9 +213,9 @@ temperature_control.bed.set_and_wait_m_code    190              #
 temperature_control.bed.max_temp               130              #
 temperature_control.bed.designator             B                #
 
-temperature_control.bed.p_factor               104.4            #
-temperature_control.bed.i_factor               4.143            #
-temperature_control.bed.d_factor               658              #
+temperature_control.bed.p_factor               105.9            #
+temperature_control.bed.i_factor               2.877            #
+temperature_control.bed.d_factor               975              #
 
 # Switch module for fan control
 # ---------------------------------------------------------------------
