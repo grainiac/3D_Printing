@@ -251,33 +251,33 @@ switch.fan.output_type                         pwm               # pwm output se
 
 # LCD Panel http://smoothieware.org/panel
 # ---------------------------------------------------------------------
-panel.enable                                 false
+panel.enable                                true
+panel.lcd                                   reprap_discount_glcd  # set type of panel
+panel.spi_channel                           0                     # SPI channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
+panel.spi_cs_pin                            0.16                  # SPI chip select     ; GLCD EXP1 Pin 4
+panel.encoder_a_pin                         3.25!^                # Encoder pin         ; GLCD EXP2 Pin 3
+panel.encoder_b_pin                         3.26!^                # Encoder pin         ; GLCD EXP2 Pin 5
+panel.click_button_pin                      2.11!^                # Click button        ; GLCD EXP1 Pin 2
+panel.back_button_pin                       0.28!^                # Back button         ; GLCD EXP2 Pin 8
+panel.encoder_resolution                    2
 
-# Viki2 config for an Azteeg X5 mini V3 with IDC cable
-panel.lcd                                    viki2             # set type of panel
-panel.spi_channel                            0                 # set spi channel to use P0_18,P0_15 MOSI,SCLK
-panel.spi_cs_pin                             0.16              # set spi chip select
-panel.encoder_a_pin                          3.25!^            # encoder pin
-panel.encoder_b_pin                          3.26!^            # encoder pin
-panel.click_button_pin                       2.11!^            # click button
-panel.a0_pin                                 2.6               # st7565 needs an a0
-panel.contrast                               8                 # override contrast setting (default is 9) miniViki (4 or lower)
-panel.encoder_resolution                     2                 # override number of clicks to move 1 item (default is 4)
-panel.menu_offset                            1                 # some panels will need 1 here
+panel.external_sd                           false                  # set to true if there is an extrernal sdcard on the panel
+#panel.external_sd.spi_channel               0                     # set spi channel the sdcard is on
+#panel.external_sd.spi_cs_pin                1.23                  # set spi chip select for the sdcard (or any spare pin)
+#panel.external_sd.sdcd_pin                  1.31!^                # sd detect signal (set to nc if no sdcard detect) (or any spare pin)
+#panel.menu_offset                           1                     # Some panels will need 1 here
 
-# 4 wire cable signals
-#panel.button_pause_pin                       1.30^             # kill/pause set one of these for the auxilliary button on viki2
-#panel.buzz_pin                               0.25              # pin for buzzer on EXP2
-#panel.blue_led_pin                           4.29              # pin for blue led on viki2 on EXP1
-#panel.red_led_pin                            2.8               # pin for red led on viki2 on EXP1
+panel.alpha_jog_feedrate                    2000                  # X jogging feedrate in mm/min
+panel.beta_jog_feedrate                     2000                  # Y jogging feedrate in mm/min
+panel.gamma_jog_feedrate                    2000                  # Z jogging feedrate in mm/min
 
-panel.alpha_jog_feedrate                     2000              # x jogging feedrate in mm/min
-panel.beta_jog_feedrate                      2000              # y jogging feedrate in mm/min
-panel.gamma_jog_feedrate                     2000              # z jogging feedrate in mm/min
+panel.hotend_temperature                    210                   # Temp to set hotend when preheat is selected
+panel.bed_temperature                       65                    # Temp to set bed when preheat is selected
 
-panel.hotend_temperature                     220               # temp to set hotend when preheat is selected
-panel.bed_temperature                        70                # temp to set bed when preheat is selected
-
+#panel.buzz_pin                              1.30                 # Pin for buzzer      ; GLCD EXP1 Pin 1
+switch.nonoise.enable                       true                  # silence the buzzer with this trick
+switch.nonoise.output_pin                   1.30v
+switch.nonoise.output_type                  digital
 
 # Custom menu entries.
 # ---------------------------------------------------------------------

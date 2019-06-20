@@ -10,13 +10,13 @@ M203 X200.00000 Y200.00000 Z200.00000
 ;Max actuator feedrates in mm/sec:
 M203.1 X200.00000 Y200.00000 Z200.00000 
 ;Optional arm solution specific settings:
-M665 L287.5000 R152.7396
+M665 L287.5000 R153.3542
 ;WCS settings
 G54
 ;Home offset (mm):
 M206 X0.00 Y0.00 Z0.90 
 ;Trim (mm):
-M666 X0.000 Y-0.266 Z-2.144
+M666 X0.000 Y-0.157 Z-1.534
 ;Max Z
 M665 Z250.000
 ;E Steps per mm:
